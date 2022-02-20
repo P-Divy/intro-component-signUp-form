@@ -29,9 +29,9 @@ form.addEventListener('submit' , e => {
    if (emailVal === ''){
     errorFunc(email, 'Look Like this is not an email');
   } 
-  else if(!isValid(email)){
-      errorFunc(email, 'Look Like this is not an email');
-  }
+//   else if(!isValid(email)){
+//       errorFunc(email, 'Look Like this is not an email');
+//   }
   else {
     successFunc(email);
   }
@@ -67,8 +67,8 @@ function successFunc(input){
 
 }
 
-function isValid(email){
-    var re = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
-    return re.test(String(email).toLowerCase());
-}
+// function isValid(email){
+//     var re = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+//     return re.test(String(email).toLowerCase());
+// }
 
