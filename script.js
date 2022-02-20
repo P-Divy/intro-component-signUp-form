@@ -16,59 +16,46 @@ form.addEventListener('submit' , e => {
          errorFunc(fname, 'First Name cannot be empty');
     }
     else {
-        successFunc(fname);
+        removeErrorFrom(fname);
     }
 
     if (lastName === ''){
         errorFunc(lname, 'Last Name cannot be empty');
    }
    else {
-       successFunc(lname);
+       removeErrorFrom(lname);
    }
 
    if (emailVal === ''){
     errorFunc(email, 'Look Like this is not an email');
   } 
-//   else if(!isValid(email)){
-//       errorFunc(email, 'Look Like this is not an email');
-//   }
   else {
-    successFunc(email);
+   removeErrorFrom(email);
   }
 
   if (passwordVal === ''){
     errorFunc(password, 'Password cannot be empty');
   }
   else {
-   successFunc(password);
+   removeErrorFrom(password);
+
   }
 
 } )
 
 function errorFunc(input,message){
-    const formControl= input.parentElement;
-    const span = formControl.querySelector('span');
+    const formControl= input.parentNode;
+    formControl.classList.add('error');
+
+    const span = formControl.querySelector('small');
     span.innerText = message;
-    input.className += 'error';
-    span.className += 'error-text';
-    input.style.color = "hsl(0, 100%, 74%)";
-    if (input!==email){
-        input.value= ' ';
-    }
-    else{
-        input.style.color = "hsl(0, 100%, 74%)";
-        input.value = "email@example/com";
-    }
 
 }
 
-function successFunc(input){
-    input.className += 'success';
-
+function removeErrorFrom(input) {
+	const formControl = input.parentNode;
+	formControl.classList.remove('error');
+    input.className = 'success';
 }
 
-// function isValid(email){
-//     var re = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
-//     return re.test(String(email).toLowerCase());
-// }
 
